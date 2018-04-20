@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "searchkick/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "searchkick_evichat"
+  spec.name          = "searchkick"
   spec.version       = Searchkick::VERSION
   spec.authors       = ["Evichat"]
   spec.email         = ["info@evichat.com"]
