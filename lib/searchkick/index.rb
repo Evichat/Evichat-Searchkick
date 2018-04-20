@@ -298,17 +298,17 @@ module Searchkick
 
       if async
         if async.is_a?(Hash) && async[:wait]
-          puts "Created index: #{index.name}"
-          puts "Jobs queued. Waiting..."
+          logger.info("Created index: #{index.name}")
+          logger.info("Jobs queued. Waiting...")
           loop do
             sleep 3
             status = Searchkick.reindex_status(index.name)
             break if status[:completed]
-            puts "Batches left: #{status[:batches_left]}"
+            logger.info("Batches left: #{status[:batches_left]}")
           end
           # already promoted if alias didn't exist
           if alias_exists
-            puts "Jobs complete. Promoting..."
+            logger.info("Jobs complete. Promoting...")
             promote(index.name, update_refresh_interval: !refresh_interval.nil?)
           end
           clean_indices unless retain
